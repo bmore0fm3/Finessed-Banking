@@ -1,6 +1,6 @@
 :root{
-    --primary-color: #1d5888;
-    --secondary-color: #ff993b;
+    --primary-color: rgba(0, 0, 0, 0.84);
+    --secondary-color: rgb(14, 147, 14);
    /* --dark-color: #292929;*/
       --dark-color: black;
     --white-color: #dff3e4;
