@@ -55,6 +55,63 @@
     <!-- === Main Section === -->
     <main class="flex-shrink-0">
         <div class="container mt-5">
+            <div class="row row-2-cols-2">
+                <div class="col-4 bg-light border">
+                    <form class="row gx-3 gy-2">
+                        <div class="col-12 form-floating mt-4 mb-2">
+                            <input id="loanAmount" type="number"  class="form-control" placeholder="1000" value="1000" aria-label="1000">
+                            <label for="floatingInput">Loan Amount</label>
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <input id="loanTerm" type="number"  class="form-control" placeholder="48" value="48" aria-label="48">
+                            <label for="floatingInput">Term (Months)</label>
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <input id="interestRate" type="number"  class="form-control" placeholder="5.3" value="5.3" aria-label="5.3">
+                            <label for="floatingInput">Interest Rate</label>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <button type="button" id="btnSubmit" class="btn btn-warning">Calculate</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-8">
+                    <div class="text-center">
+                        <h1>Your Monthly Payments</h1>
+                    </div>
+
+                    <p>Total Principal</p>
+                    <p>Total Interest</p>
+                    <p>Total Cost</p>
+
+                </div>
+
+                <div class="col-12 b border mt-2">
+                    <!--Header-->
+                    <table class="table mt-2">
+                        <thead class="bg-info">
+                            <tr>
+                                <th>Month</th>
+                                <th>Payment</th>
+                                <th>Principal</th>
+                                <th>Interest</th>
+                                <th>Total Interest</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <tbody id="results">
+                                <!--Results go here-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </main>
@@ -82,11 +139,28 @@
                 </div>
             </div>
     </footer>
+
+    <!-- Template tags: Allowed to add valid HTML that doesn't display -->
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
    
 
 </body>
