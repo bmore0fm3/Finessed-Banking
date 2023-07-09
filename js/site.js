@@ -22,6 +22,7 @@ function getData(loanAmount, termInMonths, interestRate) {
     let month = 0;
     let totalMonthlyPayment = 0;
     let remainingBalance = loanAmount;
+    let totalCost = 0;
     let accruedInterest = 0;
 
 
@@ -30,25 +31,30 @@ function getData(loanAmount, termInMonths, interestRate) {
 
         //Calculate interest payment 
         monthlyInterestPayment = remainingBalance * (interestRate/1200);
-        monthlyInterestPayment = Number((monthlyInterestPayment).toFixed(2));
+       // monthlyInterestPayment = Number((monthlyInterestPayment).toFixed(2));
 
         //calculate accrued interest
         accruedInterest = accruedInterest + monthlyInterestPayment;
-        accruedInterest = Number((accruedInterest).toFixed(2));
+        //accruedInterest = Number((accruedInterest).toFixed(2));
 
         //Calculate the monthly payment 
-        totalMonthlyPayment = (remainingBalance) * (interestRate / 1200) / (1 - Math.pow((1 + interestRate / 1200), -termInMonths));
-        totalMonthlyPayment = Number((totalMonthlyPayment).toFixed(2));
+        totalMonthlyPayment = remainingBalance * (interestRate / 1200) / (1 - Math.pow((1 + interestRate / 1200), -termInMonths));
+        //totalMonthlyPayment = Number((totalMonthlyPayment).toFixed(2));
 
         //Calculate Principal payment 
         principalPayment = totalMonthlyPayment - monthlyInterestPayment;
-        principalPayment = Number((principalPayment).toFixed(2));
+        //principalPayment = Number((principalPayment).toFixed(2));
+
+        //Calculate Total Cost
+        totalCost += totalMonthlyPayment + monthlyInterestPayment;
+        //totalCost = Number((totalCost).toFixed(2));
 
         //calculate remaining balance
         remainingBalance = remainingBalance - principalPayment;
-        remainingBalance = Number((remainingBalance).toFixed(2));
+        //remainingBalance = Number((remainingBalance).toFixed(2));
 
-        dataRows.push(month, totalMonthlyPayment, principalPayment, monthlyInterestPayment, accruedInterest, remainingBalance);
+
+        dataRows.push(month, totalMonthlyPayment.toFixed(2), principalPayment.toFixed(2), monthlyInterestPayment.toFixed(2), accruedInterest.toFixed(2), remainingBalance.toFixed(2));
 
     }
 
@@ -57,18 +63,7 @@ function getData(loanAmount, termInMonths, interestRate) {
 
 
 //Display Function
-function displayAmoritization(dataRows){
-    // let templateRows = " ";
-    // for (let index = 0; index < dataRows.length; index++) {
-    //     let amorizitation = dataRows[index];
-    //     templateRows += `<tr><td>${amorizitation}</td></tr>`
-        
-
-        
-    // }
-    // document.getElementById("results").innerHTML = templateRows;
-
-
+function displayAmoritization(dataRows) {
     //Get the table body element from the page 
     let tableBody = document.getElementById("results");
 
